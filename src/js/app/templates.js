@@ -1,12 +1,19 @@
-angular.module('app-templates', ['js/templates/breadcrumbs.html', 'js/templates/index.html', 'js/templates/projects/whoshoe.html']);
+angular.module('app-templates', ['js/templates/base.html', 'js/templates/breadcrumbs.html', 'js/templates/index.html', 'js/templates/lang-switcher.html', 'js/templates/projects/whoshoe.ru.html', 'js/templates/projects/whoshoe.ua.html']);
+
+angular.module("js/templates/base.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("js/templates/base.html",
+    "<lang-switcher></lang-switcher>\n" +
+    "<h1 translate=\"STUDIO_PEREBOR_HEADER\">Веб-студия «Перебор»<small>*</small></h1>\n" +
+    "<ui-view></ui-view>");
+}]);
 
 angular.module("js/templates/breadcrumbs.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("js/templates/breadcrumbs.html",
     "<ul class=\"breadcrumbs\">\n" +
-    "    <li><a href=\"/\">Проекты студии</a></li>\n" +
+    "    <li><a href=\"/\" translate=\"STUDIO_PROJECTS\">Проекты студии</a></li>\n" +
     "    <li>\n" +
-    "        <span ng-if=\"archive\" archive=\"\">{{name}}</span>\n" +
-    "        <span ng-if=\"!archive\">{{name}}</span>\n" +
+    "        <span ng-if=\"itemIsArchive\" archive>{{name}}</span>\n" +
+    "        <span ng-if=\"!itemIsArchive\">{{name}}</span>\n" +
     "    </li>\n" +
     "</ul>\n" +
     "");
@@ -15,29 +22,48 @@ angular.module("js/templates/breadcrumbs.html", []).run(["$templateCache", funct
 angular.module("js/templates/index.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("js/templates/index.html",
     "<article>\n" +
-    "    <p>Веб-студия «Перебор»* делает сайты, интернет-магазины, промо-странички, интранет-приложения, мобильные приложения и&nbsp;вот&nbsp;это вот всё (подробно о&nbsp;проектах по&nbsp;ссылкам):</p>\n" +
+    "    <p translate=\"STUDIO_PEREBOR_ABOUT\">Делаем сайты, интернет-магазины, промо-странички, интранет-приложения, мобильные приложения и&nbsp;вот&nbsp;это вот всё:</p>\n" +
     "    <ul>\n" +
-    "        <li>«<a href=\"http://pereborstudio.com\">Перебор</a>»&nbsp;— сайт веб&#8209;студии (комбо! сапожник в сапогах! см. «<a href=\"http://lurkmore.to/Рекурсия\">рекурсия</a>»)</a></li>\n" +
-    "        <li><span archive>«<a href=\"/projects/whoshoe\">Чей туфля?</a>»</span>&nbsp;— интернет&#8209;магазин обуви</li>\n" +
-    "        <li><span archive>«<a href=\"http://food-mg.com\">Фуд Маркет Груп</a>»</span>&nbsp;— сайт&#8209;витрина продуктовой компании</li>\n" +
-    "        <li>«<a href=\"http://feedthedevs.herokuapp.com\">Накорми разработчиков</a>»&nbsp;— приложение, позволяющее оценивать предложенные разработчиками изменения в проектах на Гитхабе (идея и прототип <a href=\"http://stepansuvorov.com\">Степана Суворова</a>)</li>\n" +
-    "        <li>«<a href=\"http://justprivat.com.ua\">Юстприват</a>»&nbsp;— информационный сайт юридической фирмы</li>\n" +
-    "        <li>«<a href=\"http://remont-far.in.ua\">Ремонт фар</a>»&nbsp;— целевая страница автомастерской</li>\n" +
-    "        <li>«<a href=\"http://xmasbeard.com\">Xmas Beard</a>»&nbsp;— рождественская игра под Андроид (<a href=\"https://play.google.com/store/apps/details?id=com.hiploaded.christmasbeard\">скачать на Плеймаркете</a>). Мы нарисовали интерфейс и логотип игры</li>\n" +
+    "        <li><span translate=\"PORTFOLIO_PEREBOR\">«<a href=\"http://pereborstudio.com\">Перебор</a>»&nbsp;— сайт веб&#8209;студии (комбо! сапожник в сапогах! см. «<a href=\"http://lurkmore.to/Рекурсия\">рекурсия</a>»)</span></li>\n" +
+    "        <li><span archive></span><span translate=\"PORTFOLIO_WHOSHOE\">«<a href=\"/projects/whoshoe\">Чей туфля?</a>»&nbsp;— интернет&#8209;магазин обуви</span></li>\n" +
+    "        <li><span archive></span><span translate=\"PORTFOLIO_FMG\">«<a href=\"http://food-mg.com\">Фуд Маркет Груп</a>»&nbsp;— сайт&#8209;витрина продуктовой компании</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_FTD\">«<a href=\"http://feedthedevs.herokuapp.com\">Накорми разработчиков</a>»&nbsp;— приложение, позволяющее оценивать предложенные разработчиками изменения в проектах на Гитхабе (идея и прототип <a href=\"http://stepansuvorov.com\">Степана Суворова</a>)</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_JUSTPRIVAT\">«<a href=\"http://justprivat.com.ua\">Юстприват</a>»&nbsp;— информационный сайт юридической фирмы</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_AUTOLIGHTS\">«<a href=\"http://remont-far.in.ua\">Ремонт фар</a>»&nbsp;— целевая страница автомастерской</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_XMAS\">«<a href=\"http://xmasbeard.com\">Xmas Beard</a>»&nbsp;— рождественская игра под Андроид (<a href=\"https://play.google.com/store/apps/details?id=com.hiploaded.christmasbeard\">скачать на Плеймаркете</a>). Мы нарисовали интерфейс и логотип игры</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_CAREERSTUDIO\">Лендинг и блог «<a href=\"http://career-studio.com.ua\">Студии карьерного развития</a>», тренеры которой помогают раскрыть таланты и построить успешную карьеру</span></li>\n" +
     "    </ul>\n" +
-    "    <h4>А ещё у нас есть зайчик: <img src=\"/assets/images/logo_100x100_transp_dark.png\"></h4>\n" +
+    "    <h4><span translate=\"PORTFOLIO_RABBIT\">А ещё у нас есть зайчик:</span> <img src=\"/assets/images/logo_100x100_transp_dark.png\"></h4>\n" +
     "\n" +
-    "    <p>Свяжитесь с&nbsp;нами:</p>\n" +
-    "    <p>Аня Переверзева, дизайнер, верстальщик, сео&#8209;оптимизатор&nbsp;— <a href=\"mailto:ania&#64;pereborstudio.com\">ania&#64;pereborstudio.com</a></p>\n" +
-    "    <p>Серёжа Переверзев, верстальщик, кодер, администратор&nbsp;— <a href=\"mailto:serg&#64;pereborstudio.com\">serg&#64;pereborstudio.com</a></p>    </p>\n" +
+    "    <h2 translate=\"CONTACT_US\">Напишите нам:</h2>\n" +
+    "    <p translate=\"CONTACT_ANIA\">Аня Переверзева, акула планшетного пера — <a href=\"mailto:ania&#64;pereborstudio.com\">ania&#64;pereborstudio.com</a></p>\n" +
+    "    <p translate=\"CONTACT_SERG\">Серёжа Переверзев, текстовый евангелист — <a href=\"mailto:serg&#64;pereborstudio.com\">serg&#64;pereborstudio.com</a></p>\n" +
     "    <div class=\"hr\"></div>\n" +
-    "    <p class = \"ref\">* Принципиально разрешимые задачи всегда разрешимы путём, как&nbsp;минимум, полного перебора. Студия «Перебор» сделает для&nbsp;вас подходящий инструмент, пусть даже для&nbsp;этого придётся перебрать и&nbsp;отбросить множество вариантов.</p>\n" +
-    "</article>");
+    "    <p class = \"ref\" translate=\"STUDIO_PEREBOR_REFERENCE\">Принципиально разрешимые задачи всегда разрешимы путём, как&nbsp;минимум, полного перебора. Студия «Перебор» сделает для&nbsp;вас подходящий инструмент, пусть даже для&nbsp;этого придётся перебрать и&nbsp;отбросить множество вариантов.</p>\n" +
+    "</article>\n" +
+    "");
 }]);
 
-angular.module("js/templates/projects/whoshoe.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("js/templates/projects/whoshoe.html",
-    "<breadcrumbs archive name=\"'Интернет-магазин обуви «Чей туфля?»'\"></breadcrumbs>\n" +
+angular.module("js/templates/lang-switcher.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("js/templates/lang-switcher.html",
+    "<div class=\"lang-switcher\" ng-click=\"langPopupVisible = !langPopupVisible\"  ng-class=\"{ 'lang-switcher__active': langPopupVisible }\">\n" +
+    "  <div class=\"lang-switcher__switch\">\n" +
+    "    <div class=\"lang-switcher__flag lang-switcher__flag--{{ currentLanguage }}\"></div>\n" +
+    "    <span class=\"lang-switcher__name\">{{ currentLanguage }}</span>\n" +
+    "  </div>\n" +
+    "  <ul class=\"lang-switcher__options\">\n" +
+    "    <li ng-repeat=\"lang in availableLanguages\" ng-click=\"switchLanguage(lang, $event);\" ng-if=\"lang !== currentLanguage\">\n" +
+    "      <div class=\"lang-switcher__flag lang-switcher__flag--{{ lang }}\"></div>\n" +
+    "      <span class=\"lang-switcher__name\">{{ lang }}</span>\n" +
+    "    </li>\n" +
+    "  </ul>\n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("js/templates/projects/whoshoe.ru.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("js/templates/projects/whoshoe.ru.html",
+    "<breadcrumbs item-is-archive=\"true\" name=\"'Интернет-магазин обуви «Чей туфля?»'\"></breadcrumbs>\n" +
     "<article>\n" +
     "    <blockquote><strong>Задача:</strong> создать для обувного магазина торговую интернет-площадку.</blockquote>\n" +
     "    <p>В студии разработали торговую марку, логотип и сайт магазина дешевой обуви. Название «Чей туфля?», сразу принятое заказчиком, определило шутливый стиль взаимодействия интерфейса с пользователем.</p>\n" +
@@ -152,4 +178,123 @@ angular.module("js/templates/projects/whoshoe.html", []).run(["$templateCache", 
     "    </figure>\n" +
     "</article>\n" +
     "<a href=\"/\">Вернуться к списку проектов</a>");
+}]);
+
+angular.module("js/templates/projects/whoshoe.ua.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("js/templates/projects/whoshoe.ua.html",
+    "<breadcrumbs item-is-archive=\"true\" name=\"'Інтернет-магазин взуття «Чий туфля?»'\"></breadcrumbs>\n" +
+    "<article>\n" +
+    "    <blockquote><strong>Задача:</strong> створити торгівельний інтернет-майданчик для магазина взуття.</blockquote>\n" +
+    "    <p>В студії розробили торгівельну марку, логотип і сайт магазина дешевого взуття. Назва «Чий туфля?», що її одразу ж було погоджено замовником, визначила жартівливий стиль взаємодії інтерфейса з користувачем.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/003.png\" alt=\"Логотип\" width=\"225\" height=\"95\"></p>\n" +
+    "        <figcaption>В студії розробили торгівельну марку та логотип</figcaption>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/002.png\" alt=\"Синиця на чоботі\" width=\"141\" height=\"115\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/006.png\" alt=\"Рядок меню\" width=\"188\" height=\"49\"></p>\n" +
+    "        <figcaption>Рядок меню оформлено за&nbsp;допомогою швейної машини</figcaption>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/007.png\" alt=\"Гроші під черевиком\" width=\"158\" height=\"113\"></p>\n" +
+    "        <figcaption>Економне взуття дозволяє володареві смітити грошима</figcaption>\n" +
+    "    </figure>\n" +
+    "    <p>Сторінка 404 підозрює у&nbsp;надто допитливих відвідувачах чорних геологів, а сторінка серверної помилки проклинає мінливість сущого.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/008.png\" alt=\"Зрозуміло. Нафту шукаєте?\" width=\"310\" height=\"285\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/030.png\" alt=\"Чорт забери той день, коли я сів за кермо цього пилососа!\" width=\"715\" height=\"273\"></p>\n" +
+    "    </figure>\n" +
+    "    <p>У&nbsp;каталозі незкінченний список товарів. Зліва інтуїтивно зрозумілі фільтри, блок із&nbsp;якими пливе слідом за прокруткою вікна.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/010.png\" alt=\"Блок із фільтрами\" width=\"281\" height=\"370\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/011.png\" alt=\"Неточний розмір\" width=\"300\" height=\"336\"></p>\n" +
+    "        <figcaption>Для тих, хто готовий купити черевики на&nbsp;розмір менші, аби&nbsp;тільки блестіли, ми приготували опцію «неточний розмір»</figcaption>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/014.png\" alt=\"Блок, що плаває\" width=\"671\" height=\"626\"></p>\n" +
+    "        <figcaption>Блок із фільтрами пливе слідом за прокруткою вікна</figcaption>\n" +
+    "    </figure>\n" +
+    "    <p>Іноді взуття ховається, аби трохи перепочити.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/009.png\" alt=\"Взуття сховалося\" width=\"567\" height=\"116\"></p>\n" +
+    "    </figure>\n" +
+    "    <p>Сайт правильно відображається як на маленькому екрані смартфона, так і на дизайнерському моніторі. Неважливе ховається. До речі, усі повзунки та перетаскування адаптовано під жести тачскріна.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/013.png\" alt=\"На великому моніторі\" width=\"1974\" height=\"781\"></p>\n" +
+    "    <figure>\n" +
+    "    </figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/028.png\" alt=\"На великому моніторі\" width=\"1241\" height=\"824\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/012.png\" alt=\"На смартфоні\" width=\"473\" height=\"734\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/029.png\" alt=\"На смартфоні\" width=\"640\" height=\"667\"></p>\n" +
+    "        <figcaption>Банери на головній шикуються в гарну сітку в залежності від роздільної здатності дисплея</figcaption>\n" +
+    "    </figure>\n" +
+    "    <p>В катці товару покупець обирає розмір взуття за допомогою повзунка, в якому вказано приблизний розмір ноги в сантиметрах. Про всяк випадок ми додали повну таблицю розмірів у попапі помічника.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/016.png\" alt=\"Картка товару\" width=\"822\" height=\"856\"></p>\n" +
+    "        <figcaption>Під карткою товару виводимо список взуття того ж типу, близького за ціною.</figcaption>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/015.png\" alt=\"Галерея світлин\" width=\"1256\" height=\"847\"></p>\n" +
+    "        <figcaption>Якісні світлини в галереї дозволяють роздивитися взуття крупним планом.</figcaption>\n" +
+    "    </figure>\n" +
+    "    <p>В магазині на дрібний опт (при покупці від двох або від п’ятьох пар) діють знижки.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/017.png\" alt=\"Від двох пар\" width=\"640\" height=\"397\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/018.png\" alt=\"Від п’ятьох пар\" width=\"295\" height=\"381\"></p>\n" +
+    "        <figcaption>Що більше замовлення, тим більші знижки.</figcaption>\n" +
+    "    </figure>\n" +
+    "    <p>В кошику пропонуємо покупцеві передивитись склад замовлення та оплатити його на тій самій сторінці.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/019.png\" alt=\"Кошик\" width=\"534\" height=\"328\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/020.png\" alt=\"Форма замовлення\" width=\"736\" height=\"594\"></p>\n" +
+    "    </figure>\n" +
+    "    <p>На формі замовлення є ввічливі та прозорі підказки. Покупець одразу дізнається, як магазин використовуватиме його персональні дані.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/021.png\" alt=\"Номер телефона\" width=\"612\" height=\"55\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/022.png\" alt=\"Персональні дані\" width=\"751\" height=\"67\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/023.png\" alt=\"Способи доставки\" width=\"650\" height=\"112\"></p>\n" +
+    "    </figure>\n" +
+    "    <p>До способів доставки та оплати надано короткі пояснення.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/025.png\" alt=\"Способи доставки\" width=\"536\" height=\"116\"></p>\n" +
+    "    </figure>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/027.png\" alt=\"Способи оплати\" width=\"539\" height=\"78\"></p>\n" +
+    "        <figcaption>Доставка кур’єрською службою тарифікується окремо.</figcaption>\n" +
+    "    </figure>\n" +
+    "    <p>Мы зареєструємо користувачів, які погодяться на створення профілю. Ми навіть згенеруємо пароль, якщо вони не бажають його вигадувати.</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/024.png\" alt=\"Вигадайте пароль\" width=\"764\" height=\"81\"></p>\n" +
+    "        <figcaption>Пароль буде згенеровано з кількох англійських слів, що легко запам’ятати. Це набагато надійніше та простіше за незрозумілі комбінації з цифрами та розділовими знаками.</figcaption>\n" +
+    "    </figure>\n" +
+    "    <p>Для входу служить віджет в правому верхньому кутку. Для сміливих маємо кнопку «показати пароль»</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/004.png\" alt=\"Вхід\" width=\"225\" height=\"166\"></p>\n" +
+    "        <p>Також варіант для сміливих:</p>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/005.png\" alt=\"Показати пароль\" width=\"221\" height=\"89\"></p>\n" +
+    "    </figure>\n" +
+    "    <p>Вуаля!</p>\n" +
+    "    <figure>\n" +
+    "        <p><img src=\"/assets/images/bucket/whoshoe/026.png\" alt=\"Дякуємо!\" width=\"580\" height=\"110\"></p>\n" +
+    "    </figure>\n" +
+    "</article>\n" +
+    "<a href=\"/\">Повернутися до списку проектів</a>");
 }]);

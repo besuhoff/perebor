@@ -1,7 +1,7 @@
 <ul class="breadcrumbs">
-    <li><a href="/">Проекты студии</a></li>
+    <li><a href="/" translate="STUDIO_PROJECTS">Проекты студии</a></li>
     <li>
-        <span ng-if="archive" archive="">{{name}}</span>
-        <span ng-if="!archive">{{name}}</span>
+        <span ng-if="itemIsArchive" archive>{{name}}</span>
+        <span ng-if="!itemIsArchive">{{name}}</span>
     </li>
 </ul>

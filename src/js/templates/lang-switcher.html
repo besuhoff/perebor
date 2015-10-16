@@ -1,0 +1,12 @@
+<div class="lang-switcher" ng-click="langPopupVisible = !langPopupVisible"  ng-class="{ 'lang-switcher__active': langPopupVisible }">
+  <div class="lang-switcher__switch">
+    <div class="lang-switcher__flag lang-switcher__flag--{{ currentLanguage }}"></div>
+    <span class="lang-switcher__name">{{ currentLanguage }}</span>
+  </div>
+  <ul class="lang-switcher__options">
+    <li ng-repeat="lang in availableLanguages" ng-click="switchLanguage(lang, $event);" ng-if="lang !== currentLanguage">
+      <div class="lang-switcher__flag lang-switcher__flag--{{ lang }}"></div>
+      <span class="lang-switcher__name">{{ lang }}</span>
+    </li>
+  </ul>
+</div>

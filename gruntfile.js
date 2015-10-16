@@ -15,13 +15,17 @@ module.exports = function(grunt) {
        dev: {
          files: [
            {src: 'bower_components/angular/angular.js', dest:'src/js/libs/angular.js'},
-           {src: 'bower_components/angular-route/angular-route.js', dest:'src/js/libs/angular-route.js'},
+           {src: 'bower_components/angular-ui-router/release/angular-ui-router.js', dest:'src/js/libs/angular-ui-router.js'},
+           {src: 'bower_components/angular-translate/angular-translate.js', dest: 'src/js/libs/angular-translate.js'},
+           {src: 'bower_components/angular-cookies/angular-cookies.js', dest:'src/js/libs/angular-cookies.js'}
          ]
        },
        prod: {
          files: [
            {src: 'bower_components/angular/angular.min.js', dest: 'build/js/libs/angular.js'},
-           {src: 'bower_components/angular-route/angular-route.min.js', dest: 'build/js/libs/angular-route.js'},
+           {src: 'bower_components/angular-ui-router/release/angular-ui-router.min.js', dest: 'build/js/libs/angular-ui-router.js'},
+           {src: 'bower_components/angular-translate/angular-translate.min.js', dest: 'build/js/libs/angular-translate.js'},
+           {src: 'bower_components/angular-cookies/angular-cookies.min.js', dest:'build/js/libs/angular-cookies.js'},
            {expand: true, cwd: 'src/', src: ['assets/**', 'js/app/**', '*'], dest: 'build/', dot: true}
          ]
        }
