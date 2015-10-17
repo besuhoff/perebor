@@ -14,7 +14,7 @@ angular.module('Perebor', ['ui.router', 'ngCookies', 'app-templates', 'pascalpre
     return {
       restrict: 'E',
       scope: {
-        name: '='
+        name: '@'
       },
       link: function($scope, $element, attrs) {
         $scope.itemIsArchive = attrs.itemIsArchive;
@@ -89,12 +89,12 @@ angular.module('Perebor', ['ui.router', 'ngCookies', 'app-templates', 'pascalpre
       .state('index', {
         url: '',
         parent: 'common',
-        templateUrl: 'js/templates/index.html'
+        templateUrl: 'js/templates/portfolio.html'
       })
       .state('indexHtml', {
         url: 'index.html',
         parent: 'common',
-        templateUrl: 'js/templates/index.html'
+        templateUrl: 'js/templates/portfolio.html'
       })
       .state('projects', {
         url: 'projects/:name',

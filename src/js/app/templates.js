@@ -1,4 +1,4 @@
-angular.module('app-templates', ['js/templates/base.html', 'js/templates/breadcrumbs.html', 'js/templates/index.html', 'js/templates/lang-switcher.html', 'js/templates/projects/whoshoe.ru.html', 'js/templates/projects/whoshoe.ua.html']);
+angular.module('app-templates', ['js/templates/base.html', 'js/templates/breadcrumbs.html', 'js/templates/lang-switcher.html', 'js/templates/portfolio.html', 'js/templates/projects/fmg.ru.html', 'js/templates/projects/fmg.ua.html', 'js/templates/projects/whoshoe.ru.html', 'js/templates/projects/whoshoe.ua.html']);
 
 angular.module("js/templates/base.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("js/templates/base.html",
@@ -19,31 +19,6 @@ angular.module("js/templates/breadcrumbs.html", []).run(["$templateCache", funct
     "");
 }]);
 
-angular.module("js/templates/index.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("js/templates/index.html",
-    "<article>\n" +
-    "    <p translate=\"STUDIO_PEREBOR_ABOUT\">Делаем сайты, интернет-магазины, промо-странички, интранет-приложения, мобильные приложения и&nbsp;вот&nbsp;это вот всё:</p>\n" +
-    "    <ul>\n" +
-    "        <li><span translate=\"PORTFOLIO_PEREBOR\">«<a href=\"http://pereborstudio.com\">Перебор</a>»&nbsp;— сайт веб&#8209;студии (комбо! сапожник в сапогах! см. «<a href=\"http://lurkmore.to/Рекурсия\">рекурсия</a>»)</span></li>\n" +
-    "        <li><span archive></span><span translate=\"PORTFOLIO_WHOSHOE\">«<a href=\"/projects/whoshoe\">Чей туфля?</a>»&nbsp;— интернет&#8209;магазин обуви</span></li>\n" +
-    "        <li><span archive></span><span translate=\"PORTFOLIO_FMG\">«<a href=\"http://food-mg.com\">Фуд Маркет Груп</a>»&nbsp;— сайт&#8209;витрина продуктовой компании</span></li>\n" +
-    "        <li><span translate=\"PORTFOLIO_FTD\">«<a href=\"http://feedthedevs.herokuapp.com\">Накорми разработчиков</a>»&nbsp;— приложение, позволяющее оценивать предложенные разработчиками изменения в проектах на Гитхабе (идея и прототип <a href=\"http://stepansuvorov.com\">Степана Суворова</a>)</span></li>\n" +
-    "        <li><span translate=\"PORTFOLIO_JUSTPRIVAT\">«<a href=\"http://justprivat.com.ua\">Юстприват</a>»&nbsp;— информационный сайт юридической фирмы</span></li>\n" +
-    "        <li><span translate=\"PORTFOLIO_AUTOLIGHTS\">«<a href=\"http://remont-far.in.ua\">Ремонт фар</a>»&nbsp;— целевая страница автомастерской</span></li>\n" +
-    "        <li><span translate=\"PORTFOLIO_XMAS\">«<a href=\"http://xmasbeard.com\">Xmas Beard</a>»&nbsp;— рождественская игра под Андроид (<a href=\"https://play.google.com/store/apps/details?id=com.hiploaded.christmasbeard\">скачать на Плеймаркете</a>). Мы нарисовали интерфейс и логотип игры</span></li>\n" +
-    "        <li><span translate=\"PORTFOLIO_CAREERSTUDIO\">Лендинг и блог «<a href=\"http://career-studio.com.ua\">Студии карьерного развития</a>», тренеры которой помогают раскрыть таланты и построить успешную карьеру</span></li>\n" +
-    "    </ul>\n" +
-    "    <h4><span translate=\"PORTFOLIO_RABBIT\">А ещё у нас есть зайчик:</span> <img src=\"/assets/images/logo_100x100_transp_dark.png\"></h4>\n" +
-    "\n" +
-    "    <h2 translate=\"CONTACT_US\">Напишите нам:</h2>\n" +
-    "    <p translate=\"CONTACT_ANIA\">Аня Переверзева, акула планшетного пера — <a href=\"mailto:ania&#64;pereborstudio.com\">ania&#64;pereborstudio.com</a></p>\n" +
-    "    <p translate=\"CONTACT_SERG\">Серёжа Переверзев, текстовый евангелист — <a href=\"mailto:serg&#64;pereborstudio.com\">serg&#64;pereborstudio.com</a></p>\n" +
-    "    <div class=\"hr\"></div>\n" +
-    "    <p class = \"ref\" translate=\"STUDIO_PEREBOR_REFERENCE\">Принципиально разрешимые задачи всегда разрешимы путём, как&nbsp;минимум, полного перебора. Студия «Перебор» сделает для&nbsp;вас подходящий инструмент, пусть даже для&nbsp;этого придётся перебрать и&nbsp;отбросить множество вариантов.</p>\n" +
-    "</article>\n" +
-    "");
-}]);
-
 angular.module("js/templates/lang-switcher.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("js/templates/lang-switcher.html",
     "<div class=\"lang-switcher\" ng-click=\"langPopupVisible = !langPopupVisible\"  ng-class=\"{ 'lang-switcher__active': langPopupVisible }\">\n" +
@@ -61,9 +36,96 @@ angular.module("js/templates/lang-switcher.html", []).run(["$templateCache", fun
     "");
 }]);
 
+angular.module("js/templates/portfolio.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("js/templates/portfolio.html",
+    "<article>\n" +
+    "    <p translate=\"STUDIO_PEREBOR_ABOUT\">Делаем сайты, интернет-магазины, промо-странички, интранет-приложения, мобильные приложения, логотипы, фирменные стили и&nbsp;вот&nbsp;это вот всё:</p>\n" +
+    "    <ul>\n" +
+    "        <li><span translate=\"PORTFOLIO_PEREBOR\">«<a href=\"http://pereborstudio.com\">Перебор</a>»&nbsp;— сайт веб&#8209;студии (комбо! сапожник в сапогах! см. «<a href=\"http://lurkmore.to/Рекурсия\">рекурсия</a>»)</span></li>\n" +
+    "        <li><span archive></span><span translate=\"PORTFOLIO_WHOSHOE\">«<a href=\"/projects/whoshoe\">Чей туфля?</a>»&nbsp;— интернет&#8209;магазин обуви</span></li>\n" +
+    "        <li><span archive></span><span translate=\"PORTFOLIO_FMG\">«<a href=\"/projects/fmg\">Фуд Маркет Груп</a>»&nbsp;— сайт&#8209;витрина продуктовой компании</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_FTD\">«<a href=\"http://feedthedevs.herokuapp.com\">Накорми разработчиков</a>»&nbsp;— приложение, позволяющее оценивать предложенные разработчиками изменения в проектах на Гитхабе (идея и прототип <a href=\"http://stepansuvorov.com\">Степана Суворова</a>)</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_JUSTPRIVAT\">«<a href=\"http://justprivat.com.ua\">Юстприват</a>»&nbsp;— информационный сайт юридической фирмы</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_AUTOLIGHTS\">«<a href=\"http://remont-far.in.ua\">Ремонт фар</a>»&nbsp;— целевая страница автомастерской</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_XMAS\">«<a href=\"https://play.google.com/store/apps/details?id=com.hiploaded.christmasbeard\">Xmas Beard</a>»&nbsp;— рождественская игра под Андроид. Мы нарисовали интерфейс и логотип игры</span></li>\n" +
+    "        <li><span translate=\"PORTFOLIO_CAREERSTUDIO\">Лендинг и блог «<a href=\"http://career-studio.com.ua\">Студии карьерного развития</a>», тренеры которой помогают раскрыть таланты и построить успешную карьеру</span></li>\n" +
+    "    </ul>\n" +
+    "    <h4><span translate=\"PORTFOLIO_RABBIT\">А ещё у нас есть зайчик:</span> <img src=\"/assets/images/logo_100x100_transp_dark.png\"></h4>\n" +
+    "\n" +
+    "    <h2 translate=\"CONTACT_US\">Напишите нам:</h2>\n" +
+    "    <p translate=\"CONTACT_ANIA\">Аня Переверзева, акула планшетного пера — <a href=\"mailto:ania&#64;pereborstudio.com\">ania&#64;pereborstudio.com</a></p>\n" +
+    "    <p translate=\"CONTACT_SERG\">Серёжа Переверзев, текстовый евангелист — <a href=\"mailto:serg&#64;pereborstudio.com\">serg&#64;pereborstudio.com</a></p>\n" +
+    "    <div class=\"hr\"></div>\n" +
+    "    <p class = \"ref\" translate=\"STUDIO_PEREBOR_REFERENCE\">Принципиально разрешимые задачи всегда разрешимы путём, как&nbsp;минимум, полного перебора. Студия «Перебор» сделает для&nbsp;вас подходящий инструмент, пусть даже для&nbsp;этого придётся перебрать и&nbsp;отбросить множество вариантов.</p>\n" +
+    "</article>\n" +
+    "");
+}]);
+
+angular.module("js/templates/projects/fmg.ru.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("js/templates/projects/fmg.ru.html",
+    "<breadcrumbs item-is-archive=\"true\" name=\"Интернет-витрина «Фуд Маркет Груп»\"></breadcrumbs>\n" +
+    "<article>\n" +
+    "  <blockquote><strong>Задача:</strong> создать интернет-витрину для распространителя импортных продуктов питания.</blockquote>\n" +
+    "  <p>В студии разработали привлекательный сайт с возможностями интернет-витрины и блога.</p>\n" +
+    "  <figure>\n" +
+    "    <p><img src=\"/assets/images/bucket/fmg/small-screen.png\" alt=\"Главная страница\" width=\"1007\" height=\"1165\"></p>\n" +
+    "    <figcaption>На главной показываем заморские вкусности</figcaption>\n" +
+    "  </figure>\n" +
+    "\n" +
+    "  <figure>\n" +
+    "    <p><img src=\"/assets/images/bucket/fmg/large-screen.png\" alt=\"Главная на большом экране\" width=\"1393\" height=\"550\"></p>\n" +
+    "    <figcaption>Композиция подстраивается под размер экрана</figcaption>\n" +
+    "  </figure>\n" +
+    "\n" +
+    "  <figure>\n" +
+    "    <p><img src=\"/assets/images/bucket/fmg/products.png\" alt=\"Раскладка каталога\" width=\"1280\" height=\"657\"></p>\n" +
+    "    <figcaption>Раскладка каталога</figcaption>\n" +
+    "  </figure>\n" +
+    "\n" +
+    "  <p>Сайт ориентирован как на потребителей товаров, так и на потенциальных бизнес-партнеров. Карта представительств, созданная на основе карт Гугл, показывает покрытие торговой сетью территории Украины и приглашает к сотрудничеству дистрибьюторов.</p>\n" +
+    "  <figure>\n" +
+    "    <p><img src=\"/assets/images/bucket/fmg/map.png\" alt=\"Карта представительств\" width=\"1278\" height=\"873\"></p>\n" +
+    "    <figcaption>Карта представительств</figcaption>\n" +
+    "  </figure>\n" +
+    "\n" +
+    "  <p>Работа сдана в архив в 2015 году.</p>\n" +
+    "</article>\n" +
+    "<a ui-sref=\"index\">Вернуться к списку проектов</a>");
+}]);
+
+angular.module("js/templates/projects/fmg.ua.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("js/templates/projects/fmg.ua.html",
+    "<breadcrumbs item-is-archive=\"true\" name=\"Інтернет-вітрина «Фуд Маркет Груп»\"></breadcrumbs>\n" +
+    "<article>\n" +
+    "  <blockquote>\n" +
+    "    <strong>Задача:</strong> створити інтернет-вітрину для розповсюджувача імпортних продуктів харчування.\n" +
+    "  </blockquote>\n" +
+    "  <p>У студії розробили привабливий сайт з можливостями інтернет-вітрини та блога.</p>\n" +
+    "  <figure>\n" +
+    "    <p><img src=\"/assets/images/bucket/fmg/small-screen.png\" alt=\"Головна сторінка\" width=\"1007\" height=\"1165\"></p>\n" +
+    "    <figcaption>На головній показуємо заморські ласощі</figcaption>\n" +
+    "  </figure>\n" +
+    "  <figure>\n" +
+    "    <p><img src=\"/assets/images/bucket/fmg/large-screen.png\" alt=\"Головна на великому екрані\" width=\"1393\" height=\"550\"></p>\n" +
+    "    <figcaption>Композиція адаптується під розмір екрану</figcaption>\n" +
+    "  </figure>\n" +
+    "  <figure><p><img src=\"/assets/images/bucket/fmg/products.png\" alt=\"Сторінка каталога\" width=\"1280\" height=\"657\"></p>\n" +
+    "    <figcaption>Сторінка каталога</figcaption>\n" +
+    "  </figure>\n" +
+    "\n" +
+    "  <p>Сайт орієнтовано як на споживачsd товарів, так і на потенційних бізнес-партнерів. Мапа представництв, яку збудовано на базі мапи Гугл, показує покриття торговельною мережею території України і заохочує до співпраці дистриб’юторів.</p>\n" +
+    "  <figure>\n" +
+    "    <p><img src=\"/assets/images/bucket/fmg/map.png\" alt=\"Мапа представництв\" width=\"1278\" height=\"873\"></p>\n" +
+    "    <figcaption>Мапа представництв</figcaption>\n" +
+    "  </figure>\n" +
+    "  <p>Роботу здано до архіву в 2015 році.</p>\n" +
+    "</article>\n" +
+    "<a ui-sref=\"index\">Повернутися до списку проектів</a>");
+}]);
+
 angular.module("js/templates/projects/whoshoe.ru.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("js/templates/projects/whoshoe.ru.html",
-    "<breadcrumbs item-is-archive=\"true\" name=\"'Интернет-магазин обуви «Чей туфля?»'\"></breadcrumbs>\n" +
+    "<breadcrumbs item-is-archive=\"true\" name=\"Интернет-магазин обуви «Чей туфля?»\"></breadcrumbs>\n" +
     "<article>\n" +
     "    <blockquote><strong>Задача:</strong> создать для обувного магазина торговую интернет-площадку.</blockquote>\n" +
     "    <p>В студии разработали торговую марку, логотип и сайт магазина дешевой обуви. Название «Чей туфля?», сразу принятое заказчиком, определило шутливый стиль взаимодействия интерфейса с пользователем.</p>\n" +
@@ -176,13 +238,15 @@ angular.module("js/templates/projects/whoshoe.ru.html", []).run(["$templateCache
     "    <figure>\n" +
     "        <p><img src=\"/assets/images/bucket/whoshoe/026.png\" alt=\"Спасибо!\" width=\"580\" height=\"110\"></p>\n" +
     "    </figure>\n" +
+    "\n" +
+    "    <p>Работа сдана в архив в 2014 году.</p>\n" +
     "</article>\n" +
-    "<a href=\"/\">Вернуться к списку проектов</a>");
+    "<a ui-sref=\"index\">Вернуться к списку проектов</a>");
 }]);
 
 angular.module("js/templates/projects/whoshoe.ua.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("js/templates/projects/whoshoe.ua.html",
-    "<breadcrumbs item-is-archive=\"true\" name=\"'Інтернет-магазин взуття «Чий туфля?»'\"></breadcrumbs>\n" +
+    "<breadcrumbs item-is-archive=\"true\" name=\"Інтернет-магазин взуття «Чий туфля?»\"></breadcrumbs>\n" +
     "<article>\n" +
     "    <blockquote><strong>Задача:</strong> створити торгівельний інтернет-майданчик для магазина взуття.</blockquote>\n" +
     "    <p>В студії розробили торгівельну марку, логотип і сайт магазина дешевого взуття. Назва «Чий туфля?», що її одразу ж було погоджено замовником, визначила жартівливий стиль взаємодії інтерфейса з користувачем.</p>\n" +
@@ -295,6 +359,7 @@ angular.module("js/templates/projects/whoshoe.ua.html", []).run(["$templateCache
     "    <figure>\n" +
     "        <p><img src=\"/assets/images/bucket/whoshoe/026.png\" alt=\"Дякуємо!\" width=\"580\" height=\"110\"></p>\n" +
     "    </figure>\n" +
+    "    <p>Роботу здано до архіву в 2014 році.</p>\n" +
     "</article>\n" +
-    "<a href=\"/\">Повернутися до списку проектів</a>");
+    "<a ui-sref=\"index\">Повернутися до списку проектів</a>");
 }]);
