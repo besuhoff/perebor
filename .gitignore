@@ -2,4 +2,5 @@ node_modules/
 bower_components/
 build/
 .idea/
+src/js/templates.js
 src/js/libs

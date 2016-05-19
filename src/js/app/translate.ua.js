@@ -11,6 +11,7 @@ angular.module('Perebor').config(function($translateProvider) {
     PORTFOLIO_AUTOLIGHTS: '«<a href="http://remont-far.in.ua">Ремонт фар</a>»&nbsp;— цільова сторінка автомайстерні',
     PORTFOLIO_XMAS: '«<a href="https://play.google.com/store/apps/details?id=com.hiploaded.christmasbeard">Xmas Beard</a>»&nbsp;— різдвяна гра під Андроїд. Ми намалювали інтерфейс та логотип гри',
     PORTFOLIO_CAREERSTUDIO: 'Лендінг і блог «<a href="http://career-studio.com.ua">Студії кар’єрного розвитку</a>», тренери якої допомогають розкрити таланти та побудувати успішну кар’єру',
+    PORTFOLIO_PEOPLEINBUSINESS: 'Сайт компанії «<a href="http://peoplein.business">People in Business</a>», яка допомагає організаціям налагоджувати комуникації та бізнес-процеси, залучаючи ресурси співробітників в повному обсязі',
     PORTFOLIO_RABBIT: 'А ще в нас є зайченятко:',
     CONTACT_US: 'Напишіть нам',
     CONTACT_ANIA: 'Аня Переверзєва, акула планшетного пера — <a href="mailto:ania&#64;pereborstudio.com">ania&#64;pereborstudio.com</a>',
