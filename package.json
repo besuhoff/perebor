@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/grunt",
-    "postinstall": "bower install && grunt install:prod",
+    "postinstall": "bower install && grunt install:dev",
     "deploy": "bower install && grunt build"
   },
   "author": "Sergiy Pereverziev",
